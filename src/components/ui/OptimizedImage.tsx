@@ -34,7 +34,7 @@ export function OptimizedImage({
   onLoad,
 }: OptimizedImageProps) {
   const [isLoaded, setIsLoaded] = useState(false)
-  const [imageSrc, setImageSrc] = useState(blurDataURL || src)
+  const [imageSrc, setImageSrc] = useState(blurDataURL ?? src)
 
   useEffect(() => {
     if (priority) {

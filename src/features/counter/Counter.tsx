@@ -1,6 +1,11 @@
+import {
+  Button,
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+} from '@/components/ui'
 import { useCounterStore } from '@/stores'
-import { Button } from '@/components/ui'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui'
 
 /**
  * Counter feature component demonstrating Zustand state management
@@ -34,9 +39,7 @@ export function Counter() {
             </Button>
           </div>
           <div className="rounded-md bg-gray-50 p-4">
-            <p className="text-sm text-gray-600">
-              This counter demonstrates:
-            </p>
+            <p className="text-sm text-gray-600">This counter demonstrates:</p>
             <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-gray-600">
               <li>Zustand state management with persistence</li>
               <li>Reusable UI components (Button, Card)</li>

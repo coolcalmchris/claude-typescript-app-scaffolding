@@ -13,13 +13,13 @@ export function Header() {
           </div>
           <nav className="flex items-center space-x-6">
             <a
-              href="#"
+              href="/"
               className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
             >
               Home
             </a>
             <a
-              href="#"
+              href="/about"
               className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
             >
               About
