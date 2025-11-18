@@ -255,7 +255,7 @@ export function generateArticleJsonLd({
     url: url,
     image: imageUrl,
     datePublished: publishedTime,
-    dateModified: modifiedTime || publishedTime,
+    dateModified: modifiedTime ?? publishedTime,
     author: {
       '@type': 'Person',
       name: authorName,

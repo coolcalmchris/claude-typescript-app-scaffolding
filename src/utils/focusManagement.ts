@@ -86,7 +86,7 @@ export function createFocusStore() {
       previouslyFocusedElement = document.activeElement as HTMLElement
     },
     restore: () => {
-      if (previouslyFocusedElement && previouslyFocusedElement.focus) {
+      if (previouslyFocusedElement?.focus) {
         previouslyFocusedElement.focus()
         previouslyFocusedElement = null
       }

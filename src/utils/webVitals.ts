@@ -77,9 +77,7 @@ export async function initWebVitals() {
 export function getPerformanceMetrics() {
   if (typeof window === 'undefined' || !window.performance) return null
 
-  const navigation = performance.getEntriesByType(
-    'navigation'
-  )[0] as PerformanceNavigationTiming
+  const navigation = performance.getEntriesByType('navigation')[0]!
 
   return {
     // Navigation timing

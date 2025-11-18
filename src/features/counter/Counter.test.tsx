@@ -1,8 +1,10 @@
-import { describe, it, expect, beforeEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { Counter } from './Counter'
+import { describe, it, expect, beforeEach } from 'vitest'
+
 import { useCounterStore } from '@/stores'
+
+import { Counter } from './Counter'
 
 describe('Counter', () => {
   beforeEach(() => {

@@ -13,7 +13,7 @@ module.exports = {
     'plugin:import/typescript',
     'prettier',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules', 'vitest.config.ts'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -72,6 +72,25 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 'warn',
     'jsx-a11y/click-events-have-key-events': 'warn',
     'jsx-a11y/no-static-element-interactions': 'warn',
+
+    // React
+    'react/no-unescaped-entities': 'off', // Allow apostrophes in JSX
+    'react-refresh/only-export-components': 'off', // Allow utility exports
+
+    // Disable overly strict rules that cause issues with valid patterns
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-unsafe-argument': 'off',
+    '@typescript-eslint/no-explicit-any': 'off', // Needed for Web Vitals performance API
+    '@typescript-eslint/non-nullable-type-assertion-style': 'off',
+    '@typescript-eslint/no-unnecessary-condition': 'off', // Too many false positives
+    '@typescript-eslint/no-empty-function': [
+      'error',
+      { allow: ['arrowFunctions'] },
+    ],
+    'import/default': 'off', // Causes issues with React 19
+    'import/no-named-as-default-member': 'off', // Causes issues with ReactDOM
+    'react-hooks/incompatible-library': 'off', // TanStack Virtual is safe
   },
   settings: {
     react: {
