@@ -37,6 +37,7 @@
     "format:check": "prettier --check \"src/**/*.{ts,tsx,json,css,md}\"",
     "type-check": "tsc --noEmit",
     "validate": "npm run type-check && npm run lint && npm run format:check && npm run test:run",
+    "lighthouse": "lhci autorun",
     "prepare": "husky"
   },
   "dependencies": {
@@ -47,6 +48,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
+    "@tanstack/react-virtual": "^3.13.12",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
@@ -58,6 +60,7 @@
     "@vitest/coverage-v8": "^4.0.10",
     "@vitest/ui": "^4.0.10",
     "autoprefixer": "^10.4.22",
+    "blurhash": "^2.0.5",
     "clsx": "^2.1.1",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
@@ -78,7 +81,11 @@
     "tailwindcss": "^4.1.17",
     "typescript": "^5.9.3",
     "vite": "^7.2.2",
+    "vite-plugin-compression": "^0.5.1",
     "vite-plugin-image-optimizer": "^2.0.3",
-    "vitest": "^4.0.10"
+    "vite-plugin-pwa": "^1.1.0",
+    "vitest": "^4.0.10",
+    "web-vitals": "^5.1.0",
+    "workbox-window": "^7.3.0"
   }
 }

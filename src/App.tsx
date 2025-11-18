@@ -18,6 +18,12 @@ const SearchExample = lazy(() =>
   }))
 )
 
+const VirtualizedList = lazy(() =>
+  import('@/features/virtualized-list').then((module) => ({
+    default: module.VirtualizedList,
+  }))
+)
+
 function App() {
   return (
     <ErrorBoundary>
@@ -45,6 +51,10 @@ function App() {
                 <SearchExample />
               </Suspense>
 
+              <Suspense fallback={<CardSkeleton />}>
+                <VirtualizedList />
+              </Suspense>
+
               <div className="rounded-lg border border-blue-200 bg-blue-50 p-6">
                 <h3 className="mb-2 font-semibold text-blue-900">
                   Modern React Patterns Demonstrated
@@ -54,7 +64,10 @@ function App() {
                   <li>✓ Suspense for code splitting and lazy loading</li>
                   <li>✓ useTransition for non-blocking updates</li>
                   <li>✓ useDeferredValue for performance optimization</li>
+                  <li>✓ Virtual scrolling for large lists</li>
                   <li>✓ Skeleton loaders for better UX</li>
+                  <li>✓ Web Vitals monitoring</li>
+                  <li>✓ PWA with offline support</li>
                 </ul>
               </div>
             </div>
