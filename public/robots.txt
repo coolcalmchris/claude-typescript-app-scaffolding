@@ -1,0 +1,17 @@
+# https://www.robotstxt.org/robotstxt.html
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://example.com/sitemap.xml
+
+# Crawl-delay (optional, uncomment if needed)
+# Crawl-delay: 10
+
+# Disallow specific paths (examples, uncomment/modify as needed)
+# Disallow: /admin/
+# Disallow: /api/
+# Disallow: /private/
+# Disallow: /*.json$
+# Disallow: /*.xml$
