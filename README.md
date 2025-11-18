@@ -1,43 +1,96 @@
 # TypeScript App Scaffolding
 
-A modern, scalable TypeScript application built with state-of-the-art libraries and best practices.
+A production-ready, modern TypeScript application built with state-of-the-art libraries, best practices, and cutting-edge React patterns.
+
+[![CI](https://github.com/yourusername/typescript-app-scaffolding/workflows/CI/badge.svg)](https://github.com/yourusername/typescript-app-scaffolding/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Features
 
-- **React 19** - Latest version of React with modern patterns
-- **TypeScript** - Strict type checking for robust code
-- **Vite** - Lightning-fast build tool and dev server
-- **Tailwind CSS** - Utility-first CSS framework
-- **Zustand** - Lightweight state management with persistence
-- **Vitest** - Fast unit testing framework
-- **ESLint & Prettier** - Code quality and formatting
-- **Path Aliases** - Clean imports with @ prefix
+### Core Technologies
+
+- **React 19** - Latest React with concurrent features (Suspense, useTransition, useDeferredValue)
+- **TypeScript 5.9** - Strict mode for maximum type safety
+- **Vite 7** - Lightning-fast build tool with HMR
+- **Tailwind CSS 4** - Utility-first CSS with automatic class sorting
+
+### State Management
+
+- **Zustand 5** - Lightweight state management
+  - DevTools integration for debugging
+  - Persist middleware for localStorage
+  - Zero boilerplate
+
+### Code Quality & Tooling
+
+- **ESLint** - Enhanced with accessibility (a11y) and import ordering
+- **Prettier** - With Tailwind CSS class sorting
+- **Husky + lint-staged** - Git hooks for pre-commit validation
+- **Commitlint** - Conventional commit messages
+- **GitHub Actions** - Complete CI/CD pipeline
+
+### Testing
+
+- **Vitest** - Fast, Vite-native testing framework
+- **React Testing Library** - User-centric component testing
+- **Coverage Reports** - V8 coverage with threshold enforcement
+
+### Performance Optimizations
+
+- **Code Splitting** - Lazy loading with React.lazy and Suspense
+- **Bundle Analysis** - rollup-plugin-visualizer for size tracking
+- **Image Optimization** - Automatic compression and format conversion
+- **Smart Chunking** - Feature-based and vendor code splitting
+
+### Modern React Patterns
+
+- **Error Boundaries** - Graceful error handling
+- **Suspense Boundaries** - Loading states with skeleton loaders
+- **useTransition** - Non-blocking UI updates
+- **useDeferredValue** - Performance optimization for expensive renders
+- **Lazy Loading** - Route and component-level code splitting
 
 ## Tech Stack
 
 ### Core
+
 - React 19.2.0
-- TypeScript (strict mode)
-- Vite
+- TypeScript 5.9 (strict mode)
+- Vite 7.2
 
 ### Styling
-- Tailwind CSS 3.x
+
+- Tailwind CSS 4.1
 - PostCSS
 - Autoprefixer
+- clsx + tailwind-merge for class management
 
 ### State Management
+
 - Zustand 5.x with DevTools and Persist middleware
 
 ### Testing
+
 - Vitest
 - React Testing Library
 - @testing-library/user-event
-- Coverage with V8
+- jsdom
+- V8 coverage
 
 ### Code Quality
-- ESLint with TypeScript support
-- Prettier
-- Type-checked linting rules
+
+- ESLint with TypeScript, React, a11y, and import plugins
+- Prettier with Tailwind plugin
+- Husky for git hooks
+- lint-staged for pre-commit checks
+- Commitlint for conventional commits
+
+### Build & Bundle
+
+- Rollup (via Vite)
+- rollup-plugin-visualizer (bundle analysis)
+- vite-plugin-image-optimizer
+- Feature-based code splitting
 
 ## Project Structure
 
@@ -45,107 +98,193 @@ A modern, scalable TypeScript application built with state-of-the-art libraries 
 src/
 ├── assets/           # Static assets (images, styles)
 │   └── styles/       # Global CSS and Tailwind
-├── components/       # Reusable components
-│   ├── ui/          # Basic UI components (Button, Card, etc.)
-│   └── layout/      # Layout components (Header, Footer, etc.)
+├── components/
+│   ├── ui/          # Reusable UI components
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   └── LoadingSpinner.tsx
+│   ├── layout/      # Layout components
+│   │   ├── Header.tsx
+│   │   ├── Footer.tsx
+│   │   └── Layout.tsx
+│   └── ErrorBoundary.tsx
 ├── features/        # Feature-based modules
-│   └── counter/     # Example feature
+│   ├── counter/     # State management example
+│   ├── dashboard/   # useTransition example
+│   └── search/      # useDeferredValue example
 ├── hooks/           # Custom React hooks
+│   └── useDebounce.ts
 ├── stores/          # Zustand stores
+│   └── counterStore.ts
 ├── types/           # TypeScript type definitions
 ├── utils/           # Utility functions
-└── __tests__/       # Test setup and utilities
+│   └── cn.ts        # Class name utility
+├── __tests__/       # Test setup
+├── App.tsx          # Root component with Error Boundary & Suspense
+├── main.tsx         # Entry point
+└── vite-env.d.ts    # Environment types
 ```
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ and npm
+- Node.js >= 18.0.0
+- npm >= 9.0.0
 
 ### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/typescript-app-scaffolding.git
+cd typescript-app-scaffolding
+
 # Install dependencies
 npm install
 
 # Start development server
 npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
 ```
+
+The app will be available at `http://localhost:3000`
+
+### Environment Variables
+
+Copy `.env.example` to `.env` and configure:
+
+```bash
+cp .env.example .env
+```
+
+All environment variables must be prefixed with `VITE_` to be exposed to the client.
 
 ## Available Scripts
 
+### Development
+
 - `npm run dev` - Start development server on port 3000
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
+- `npm run preview` - Preview production build locally
+
+### Build
+
+- `npm run build` - Build for production (type-check + bundle)
+- `npm run build:analyze` - Build with bundle analysis
+
+### Testing
+
 - `npm test` - Run tests in watch mode
-- `npm run test:ui` - Run tests with UI
-- `npm run test:coverage` - Generate test coverage report
-- `npm run lint` - Lint code
+- `npm run test:ui` - Run tests with Vitest UI
+- `npm run test:coverage` - Generate coverage report
+- `npm run test:run` - Run tests once (CI mode)
+
+### Code Quality
+
+- `npm run lint` - Lint code with ESLint
 - `npm run lint:fix` - Fix linting issues
 - `npm run format` - Format code with Prettier
+- `npm run format:check` - Check code formatting
 - `npm run type-check` - Check TypeScript types
+
+### Validation
+
+- `npm run validate` - Run all checks (type-check + lint + format + test)
 
 ## Code Quality
 
 ### TypeScript Configuration
 
-This project uses strict TypeScript configuration with:
-- `strict: true` - All strict type checking options enabled
-- `noUnusedLocals: true` - Error on unused local variables
-- `noUnusedParameters: true` - Error on unused parameters
-- `noFallthroughCasesInSwitch: true` - Error on switch fallthrough
-- `noImplicitReturns: true` - Error on missing return statements
-- And more strict checks for production-ready code
+Strict TypeScript settings for maximum type safety:
 
-### ESLint
-
-Configured with:
-- TypeScript ESLint with type-checked rules
-- React Hooks rules
-- React Refresh for HMR
-- Prettier integration
-
-### Path Aliases
-
-Clean imports using path aliases:
-
-```typescript
-import { Button } from '@/components/ui'
-import { useCounterStore } from '@/stores'
-import { cn } from '@/utils'
-```
-
-## State Management
-
-Using Zustand for simple, scalable state management:
-
-```typescript
-import { useCounterStore } from '@/stores'
-
-function Component() {
-  const { count, increment, decrement } = useCounterStore()
-  // ...
+```json
+{
+  "strict": true,
+  "noUnusedLocals": true,
+  "noUnusedParameters": true,
+  "noFallthroughCasesInSwitch": true,
+  "noImplicitReturns": true,
+  "noUncheckedIndexedAccess": true,
+  "noImplicitOverride": true,
+  "exactOptionalPropertyTypes": true
 }
 ```
 
-Features:
-- DevTools integration for debugging
-- State persistence with localStorage
-- No boilerplate, simple API
-- TypeScript support out of the box
+### ESLint Configuration
+
+Enhanced rules for code quality:
+
+- **TypeScript**: Type-checked linting with strict rules
+- **React**: Hooks rules and best practices
+- **Accessibility**: jsx-a11y for WCAG compliance
+- **Imports**: Automatic import ordering and organization
+- **Prettier**: Integration for consistent formatting
+
+### Git Hooks
+
+Pre-commit hooks ensure code quality:
+
+1. **lint-staged**: Auto-format and lint staged files
+2. **type-check**: Verify TypeScript compilation
+3. **commit-msg**: Validate commit message format
+
+### Conventional Commits
+
+Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+feat(counter): add reset button
+fix(button): correct hover state
+docs(readme): update installation steps
+```
+
+## CI/CD Pipeline
+
+GitHub Actions workflow runs on every push/PR:
+
+1. **Code Quality** - ESLint, Prettier, TypeScript
+2. **Tests** - Unit tests with coverage
+3. **Build** - Production build verification
+4. **Validation** - Full validation check
+
+Runs on Node 18.x and 20.x for compatibility.
+
+## Performance
+
+### Code Splitting
+
+- Lazy-loaded components with `React.lazy()`
+- Suspense boundaries with loading states
+- Feature-based chunk splitting
+- Vendor code separation
+
+### Bundle Optimization
+
+- Tree shaking for dead code elimination
+- Manual chunks for optimal caching
+- Source maps for debugging
+- CSS code splitting
+
+### Build Analysis
+
+Generate bundle analysis:
+
+```bash
+npm run build:analyze
+```
+
+Opens `dist/stats.html` with interactive bundle visualization.
+
+### React Concurrent Features
+
+- **Error Boundaries**: Catch and handle errors gracefully
+- **Suspense**: Loading states for async components
+- **useTransition**: Non-blocking state updates
+- **useDeferredValue**: Defer expensive re-renders
 
 ## Component Patterns
 
 ### Barrel Exports
 
-Each module uses barrel exports for clean imports:
+Clean imports via index files:
 
 ```typescript
 // Instead of
@@ -156,100 +295,142 @@ import { Card } from '@/components/ui/Card'
 import { Button, Card } from '@/components/ui'
 ```
 
-### Type-safe Props
+### Path Aliases
 
-All components use TypeScript interfaces for props:
+TypeScript path aliases for imports:
 
 ```typescript
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline'
-  size?: 'sm' | 'md' | 'lg'
-}
+import { Button } from '@/components/ui'
+import { useCounterStore } from '@/stores'
+import { cn } from '@/utils'
+```
+
+### Class Name Utility
+
+`cn()` utility combines `clsx` and `tailwind-merge`:
+
+```typescript
+<div className={cn(
+  'base-class',
+  condition && 'conditional-class',
+  'px-4' // Properly merged with Tailwind classes
+)} />
+```
+
+## State Management
+
+Zustand provides simple, scalable state:
+
+```typescript
+// Define store
+export const useStore = create<State>()(
+  devtools(
+    persist(
+      (set) => ({
+        count: 0,
+        increment: () => set((state) => ({ count: state.count + 1 })),
+      }),
+      { name: 'storage-key' }
+    )
+  )
+)
+
+// Use in components
+const { count, increment } = useStore()
 ```
 
 ## Testing
 
-Run tests with Vitest:
-
-```bash
-# Watch mode
-npm test
-
-# UI mode
-npm run test:ui
-
-# Coverage
-npm run test:coverage
-```
-
-Example test:
+### Writing Tests
 
 ```typescript
-it('increments the counter', async () => {
-  const user = userEvent.setup()
-  render(<Counter />)
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
-  await user.click(screen.getByRole('button', { name: /increment/i }))
+describe('Component', () => {
+  it('handles user interaction', async () => {
+    const user = userEvent.setup()
+    render(<Component />)
 
-  expect(screen.getByText('1')).toBeInTheDocument()
+    await user.click(screen.getByRole('button'))
+
+    expect(screen.getByText('Result')).toBeInTheDocument()
+  })
 })
 ```
 
-## Extending the Application
+### Coverage
 
-### Adding a New Feature
+View coverage report:
 
-1. Create a feature directory: `src/features/my-feature/`
-2. Add components, types, and logic
-3. Create an index.ts for barrel exports
-4. Add tests: `MyFeature.test.tsx`
+```bash
+npm run test:coverage
+open coverage/index.html
+```
 
-### Adding a New Component
+## Documentation
 
-1. Create component in `src/components/ui/` or `src/components/layout/`
-2. Use TypeScript for props
-3. Apply Tailwind classes
-4. Export from index.ts
-
-### Adding a New Store
-
-1. Create store in `src/stores/`
-2. Use Zustand's create function
-3. Add TypeScript types
-4. Export from index.ts
+- [CONTRIBUTING.md](./CONTRIBUTING.md) - Contribution guidelines
+- [ARCHITECTURE.md](./ARCHITECTURE.md) - Detailed architecture documentation
 
 ## Best Practices
 
-1. **Always use TypeScript types** - Never use `any`
-2. **Component composition** - Build complex UIs from simple components
-3. **Barrel exports** - Keep imports clean
-4. **Test coverage** - Write tests for critical features
-5. **Path aliases** - Use @ prefix for imports
-6. **Strict mode** - Keep TypeScript strict settings enabled
-7. **Code formatting** - Run Prettier before commits
-
-## Performance Optimizations
-
-- Code splitting with Vite
-- Manual chunks for vendor libraries
-- Source maps for debugging
-- Tree shaking for smaller bundles
-- React Strict Mode for catching issues
+1. **Type Safety**: Always use explicit types, avoid `any`
+2. **Component Design**: Single responsibility, composition over inheritance
+3. **State Management**: Keep state as local as possible
+4. **Performance**: Lazy load heavy components, optimize re-renders
+5. **Testing**: Write tests for critical functionality
+6. **Accessibility**: Follow WCAG guidelines, use semantic HTML
+7. **Git Workflow**: Feature branches, conventional commits, PR reviews
 
 ## Browser Support
 
-Supports all modern browsers that support ES2020:
+Supports all modern browsers with ES2020:
+
 - Chrome/Edge (latest)
 - Firefox (latest)
 - Safari (latest)
 
-## License
+## Deployment
 
-MIT
+### Build
+
+```bash
+npm run build
+```
+
+Output is in `dist/` directory.
+
+### Environment Variables
+
+Set environment variables in your deployment platform:
+
+- Vercel: Project Settings → Environment Variables
+- Netlify: Site Settings → Build & Deploy → Environment
+- Other: Refer to platform documentation
 
 ## Contributing
 
-1. Follow the existing code style
-2. Write tests for new features
-3. Run linting and type checking before commits
-4. Keep commits focused and descriptive
+Contributions are welcome! Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
+
+### Quick Start
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feat/amazing-feature`
+3. Commit changes: `git commit -m 'feat: add amazing feature'`
+4. Push to branch: `git push origin feat/amazing-feature`
+5. Open a Pull Request
+
+## License
+
+MIT © [Your Name]
+
+## Acknowledgments
+
+Built with modern tools and best practices:
+
+- React Team for concurrent features
+- Vite Team for blazing-fast tooling
+- Tailwind Labs for utility-first CSS
+- Zustand for simple state management
+- And the entire open source community
